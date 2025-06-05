@@ -1,6 +1,66 @@
+:root{
+    --color-grey: #e4dfda;
+    --color-darker-grey: #d7d2cd;
+    --color-green: #48a9a6;
+    --color-brown: #d4b483;
+    --color-red: #c1666b;
+    --color-blue: #4357ad;
+    --var-brown: #863f28;
+}
+
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
+    background-color: var(--color-grey);
+    color: var(--color-green)
 }
+
+header {
+    text-align: center;
+    background-color: var(--color-darker-grey);
+    padding: 1px;
+}
+
+footer {
+    background-color: var(--color-darker-grey);
+    size: 10px;
+    height: 20px;
+}
+
+.playlist-cards{
+    margin: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 2px solid var(--color-brown);
+    margin: 5px 30px 5px 30px;
+    padding: 10px;
+    border-radius: 5%;
+}
+
+.card:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.playlist-image {
+    height: 250px;
+    width: 200px;
+    border-radius: 5%;
+}
+
+#playlist-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 25%;
+    top: 25%;
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
