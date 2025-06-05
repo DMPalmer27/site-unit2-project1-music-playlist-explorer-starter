@@ -10,7 +10,7 @@
 
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--color-grey);
@@ -30,14 +30,15 @@ footer {
 }
 
 .playlist-cards{
-    margin: 50px;
+    /*margin: 50px;*/
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .card {
     border: 2px solid var(--color-brown);
-    margin: 5px 30px 5px 30px;
+    margin: 50px;
     padding: 10px;
     border-radius: 5%;
 }
@@ -46,14 +47,42 @@ footer {
     background-color: rgba(0,0,0,0.1);
 }
 
+.playlist-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    height: 50px;
+    align-items: center;
+}
+
+
 .playlist-image {
     height: 250px;
     width: 200px;
     border-radius: 5%;
 }
 
+.playlist-info {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+
+
+
+.playlist-likes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.playlist-likes:hover{
+    color: var(--color-red);
+}
+
 #playlist-modal {
     display: none;
+    flex-direction: column;
     position: fixed;
     z-index: 1;
     left: 25%;
@@ -61,6 +90,53 @@ footer {
     width: 50%;
     height: 50%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
+    background-color: var(--color-darker-grey);
+    box-shadow: 0 24px 24px rgb(70, 41, 15);
+    border-radius: 7%;
+    padding: 15px;
 }
 
+.playlist-details {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playlist-details h2:hover {
+    color: var(--color-red);
+}
+
+.modal-playlist-image {
+    height: 200px;
+    width: 175px;
+}
+
+.playlist-details {
+    margin: 20px;
+}
+
+
+.song {
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    outline: 3px solid var(--color-brown);
+    border-radius: 5%;
+}
+
+.song-data {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px
+}
+
+.song-image {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+}

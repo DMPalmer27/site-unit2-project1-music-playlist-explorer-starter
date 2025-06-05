@@ -7,7 +7,10 @@
     <title>Music Playlist Explorer</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <header>
@@ -16,45 +19,18 @@
 
     <main> 
         <!-- Your main content here -->
-        <section class="playlist-cards">
-            <section class="card">
-                <img class="playlist-image">
-                <h3>Playlist Title</h3>
-                <p>Creator Name</p>
-                <p>Like Count</p>
-            </section>
-            <section class="card">
-                <img class="playlist-image">
-                <h3>Playlist Title</h3>
-                <p>Creator Name</p>
-                <p>Like Count</p>
-            </section>
-            <section class="card">
-                <img class="playlist-image">
-                <h3>Playlist Title</h3>
-                <p>Creator Name</p>
-                <p>Like Count</p>
-            </section>
-        </section>
+         <nav></nav>
+        <section class="playlist-cards"></section>
     </main>
 
-    <div class="modal-overlay" id="playlist-modal">
-        <div class="playlist-info">
-            <img class="playlist-image">
-            <div class="playlist-details">
-                <h1>Playlist Title</h1>
-                <h3>Creator Name</h3>
-            </div>
-        </div>
-        <div class="playlist-songs">
-            <h1>Songs Placeholder</h1>
-        </div>
-    </div>
+    <div class="modal-overlay" id="playlist-modal"></div>
 
     <footer>
         <!-- Your footer content here -->
     </footer>
-    <script src="data/data.js"></script>
+    <script src="songs.js"></script>
+    <script src="playlists.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
