@@ -104,8 +104,14 @@ footer {
     align-items: center;
 }
 
+.playlist-details h2 {
+    border: 5px solid var(--color-brown);
+    padding: 20px;
+}
+
 .playlist-details h2:hover {
-    color: var(--color-red);
+    background-color: var(--color-red);
+    color: var(--color-grey)
 }
 
 .modal-playlist-image {

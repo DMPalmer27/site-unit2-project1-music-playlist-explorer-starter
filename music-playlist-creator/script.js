@@ -2,26 +2,43 @@ const modal = document.getElementById('playlist-modal');
 const body = document.querySelector('body');
 let isModalOpen = false;
 
-const handleStandardModalOpen = (playlist) => {
+const handleStandardModalOpen = (id) => {
     modal.style.display = 'flex';
     setTimeout(()=>{
         isModalOpen = true;
     },10)
     modal.innerHTML = `
     <div class='playlist-info'>
-        <img class='modal-playlist-image' src=${playlist.art}>
+        <img class='modal-playlist-image' src=${playlists[id].art}>
         <div class = 'playlist-details'>
             <div>
-                <h1>${playlist.name}</h1>
-                <h3>${playlist.author}</h3>
+                <h1>${playlists[id].name}</h1>
+                <h3>${playlists[id].author}</h3>
             </div>
             <h2 id='shuffle-btn'>Shuffle</h2>
         </div>
     </div>
     <div class='playlist-songs'></div>
     `;
+    renderSongs(id);
+    shuffleBtn = modal.querySelector('#shuffle-btn');
+        shuffleBtn.addEventListener('click', ()=>{
+            handleShuffleBtn(id)
+        });
+}
+
+const handleShuffleBtn = (id) => {
+    curSongs = playlists[id].songs;
+    newSongs = shuffleArray(playlists[id].songs);
+    playlists[id] = {...playlists[id], songs: newSongs};
+    renderSongs(id);
+}
+
+//render the songs
+const renderSongs = (id) => {
     songContainer = modal.querySelector('.playlist-songs');
-    for (let song of playlist.songs){
+    songContainer.innerHTML = '';
+    for (let song of playlists[id].songs){
         songContainer.innerHTML += `
         <div class='song'>
             <img class='song-image' src=${song.image}>
@@ -35,13 +52,7 @@ const handleStandardModalOpen = (playlist) => {
             </div>
         </div>
         `;
-        shuffleBtn = modal.querySelector('#shuffle-btn');
-        shuffleBtn.addEventListener('click', handleShuffleBtn);
     }
-}
-
-const handleShuffleBtn = () => {
-    console.log('shuffle click');
 }
 
 const handleEditModalOpen = (playlist) => {
@@ -51,6 +62,7 @@ const handleEditModalOpen = (playlist) => {
 const handleOutsideModalClick = (event) => {
     if (isModalOpen){
         if (!modal.contains(event.target)){
+            console.log('click outside modal - closing');
             modal.style.display = 'none';
             setTimeout(() => {
                 isModalOpen = false;
@@ -58,6 +70,7 @@ const handleOutsideModalClick = (event) => {
         }
     }
 }
+
 document.addEventListener('click', handleOutsideModalClick);
 
 
@@ -80,7 +93,7 @@ const createPlaylistCard = (playlist) => {
     playlistElement.addEventListener('click', (event)=>{
         const editMenu = playlistElement.querySelector('.playlist-actions');
         if (!editMenu.contains(event.target)){
-            handleStandardModalOpen(playlist);
+            handleStandardModalOpen(playlist.id);
         }
     });
     return playlistElement;
@@ -121,7 +134,7 @@ const handleEditPlaylist = () => {
 //for the standard playlists
 const generateRandomPlaylist = (playlist) => {
     const shuffledSongs = shuffleArray(songs);
-    return shuffledSongs.slice(0, 29);
+    return shuffledSongs.slice(0, 14);
 }
 
 //generic pseudo-random shuffle used to create random playlists
