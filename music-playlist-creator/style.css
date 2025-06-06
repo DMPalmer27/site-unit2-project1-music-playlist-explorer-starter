@@ -29,6 +29,21 @@ footer {
     height: 20px;
 }
 
+nav{
+    display: flex;
+}
+
+.featured-btn{
+    border: 3px solid var(--color-brown);
+    padding: 7px;
+    margin: 15px;
+}
+
+.featured-btn:hover{
+    background-color: var(--color-red);
+    color: var(--color-grey);
+}
+
 .playlist-cards{
     /*margin: 50px;*/
     display: flex;
