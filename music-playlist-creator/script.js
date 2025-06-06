@@ -1,9 +1,12 @@
 const modal = document.getElementById('playlist-modal');
+const modalOverlay = document.querySelector('.modal-overlay');
 const body = document.querySelector('body');
 let isModalOpen = false;
 
 const handleStandardModalOpen = (id) => {
     modal.style.display = 'flex';
+    modalOverlay.style.display = 'flex';
+    //body.style.backgroundColor = 'var(--color-darker-grey)';
     setTimeout(()=>{
         isModalOpen = true;
     },10)
@@ -64,6 +67,7 @@ const handleOutsideModalClick = (event) => {
         if (!modal.contains(event.target)){
             console.log('click outside modal - closing');
             modal.style.display = 'none';
+            modalOverlay.style.display = 'none';
             setTimeout(() => {
                 isModalOpen = false;
             },10)

@@ -1,6 +1,6 @@
 :root{
     --color-grey: #e4dfda;
-    --color-darker-grey: #d7d2cd;
+    --color-darker-grey: #858380;
     --color-green: #48a9a6;
     --color-brown: #d4b483;
     --color-red: #c1666b;
@@ -93,16 +93,27 @@ footer {
     display: none;
     flex-direction: column;
     position: fixed;
-    z-index: 1;
+    z-index: 5;
     left: 25%;
     top: 25%;
     width: 50%;
     height: 50%;
     overflow: auto;
-    background-color: var(--color-darker-grey);
+    background-color: var(--color-grey);
     box-shadow: 0 24px 24px rgb(70, 41, 15);
     border-radius: 7%;
     padding: 15px;
+}
+
+.modal-overlay {
+    display: none;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(85, 83, 80, 0.8);
 }
 
 .playlist-details {
