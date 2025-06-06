@@ -39,12 +39,30 @@ nav{
     border: 3px solid var(--color-brown);
     padding: 7px;
     margin: 15px;
+
+}
+
+.nav-btn a{
+    text-decoration: none;
+    color: inherit;
 }
 
 .nav-btn:hover{
     background-color: var(--color-red);
     color: var(--color-grey);
 }
+
+#featured-btn{
+    border: 3px solid var(--color-brown);
+    padding: 7px;
+    margin: 15px;
+}
+
+#featured-btn:hover{
+    background-color: var(--color-red);
+    color: var(--color-grey);
+}
+
 
 .playlist-cards{
     display: flex;

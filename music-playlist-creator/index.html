@@ -20,12 +20,14 @@
     <main> 
         <!-- Your main content here -->
          <nav>
-            <h1 class="nav-btn" id="featured-btn">Featured Playlist</h1>
+            <h1 class="nav-btn"><a href='./featured.html'> Featured Playlist</a></h1>
+            <div class="form-clear">
             <form id='search-form'>
                 <input type="text" id="search-entry" name="search-entry" required>
                 <button type="submit" id="search-btn">Search</button>
-                <button id="clear-btn">Clear</button>
             </form>
+            <button id="clear-btn">Clear</button>
+            </div>
             <h1 class="nav-btn" id="add-btn">Add Playlist</h1>
          </nav>
         <section class="playlist-cards"></section>
