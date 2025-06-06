@@ -258,7 +258,6 @@ const loadPlaylistCards = () => {
   }
 };
 
-let timesVisitedHome = 0;
 //load the initial playlists at the start
 document.addEventListener("DOMContentLoaded", () => {
   //give initial playlists random songs
@@ -267,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const likeCount = Math.floor(Math.random() * 100);
     return { ...playlist, songs: playlistSongs, likeCount: likeCount };
   });
-  //give first playlist zero likes
+  //give first playlist zero likes (in the rubric)
   if (playlists) {
     playlists[0] = { ...playlists[0], likeCount: 0 };
   }
@@ -280,6 +279,44 @@ document.addEventListener("DOMContentLoaded", () => {
     clear.addEventListener("click", handleClear);
     addBtn = document.querySelector("#add-btn");
     addBtn.addEventListener("click", handleAddModalOpen);
+
+	dateSort = document.querySelector('#sort-date');
+	nameSort = document.querySelector('#sort-name');
+	likeSort = document.querySelector('#sort-likes');
+	dateSort.addEventListener('click', ()=>{
+		shownPlaylists = playlists;
+		dateSort.style.backgroundColor = 'var(--color-red)';
+		dateSort.style.color = 'var(--color-grey)';
+		nameSort.style.backgroundColor = 'var(--color-grey)';
+		nameSort.style.color = 'var(--color-green)';
+		likeSort.style.backgroundColor = 'var(--color-grey)';
+		likeSort.style.color = 'var(--color-green)';
+		loadPlaylistCards();		
+	})
+	nameSort.addEventListener('click', ()=>{
+		shownPlaylists = [...playlists].sort((a, b) => {
+			return a.name.localeCompare(b.name);
+		})
+		nameSort.style.backgroundColor = 'var(--color-red)';
+		nameSort.style.color = 'var(--color-grey)';
+		dateSort.style.backgroundColor = 'var(--color-grey)';
+		dateSort.style.color = 'var(--color-green)';
+		likeSort.style.backgroundColor = 'var(--color-grey)';
+		likeSort.style.color = 'var(--color-green)';
+		loadPlaylistCards();
+	})
+	likeSort.addEventListener('click', ()=>{
+		shownPlaylists = [...playlists].sort((a,b)=>{
+			return b.likeCount - a.likeCount;
+		})
+		likeSort.style.backgroundColor = 'var(--color-red)';
+		likeSort.style.color = 'var(--color-grey)';
+		nameSort.style.backgroundColor = 'var(--color-grey)';
+		nameSort.style.color = 'var(--color-green)';
+		dateSort.style.backgroundColor = 'var(--color-grey)';
+		dateSort.style.color = 'var(--color-green)';
+		loadPlaylistCards();
+	})
   }
   if (document.title === "Featured") {
     randID = Math.floor(Math.random() * playlists.length);
@@ -330,5 +367,3 @@ const handleClear = () => {
   form = document.querySelector("#search-form");
   form.reset();
 };
-
-

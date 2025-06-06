@@ -214,3 +214,21 @@ nav{
     display: flex;
     flex-direction: column;
 }
+
+#sort-options {
+    display: flex;
+}
+
+#sort-date {
+    background-color: var(--color-red);
+    color: var(--color-grey);
+    padding: 10px
+}
+
+#sort-name {
+    padding: 10px;
+}
+
+#sort-likes {
+    padding: 10px;
+}
