@@ -20,7 +20,13 @@
     <main> 
         <!-- Your main content here -->
          <nav>
-            <h1 class="featured-btn">Featured Playlist</h1>
+            <h1 class="nav-btn" id="featured-btn">Featured Playlist</h1>
+            <form id='search-form'>
+                <input type="text" id="search-entry" name="search-entry" required>
+                <button type="submit" id="search-btn">Search</button>
+                <button id="clear-btn">Clear</button>
+            </form>
+            <h1 class="nav-btn" id="add-btn">Add Playlist</h1>
          </nav>
         <section class="playlist-cards"></section>
     </main>

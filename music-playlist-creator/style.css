@@ -31,21 +31,22 @@ footer {
 
 nav{
     display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
-.featured-btn{
+.nav-btn{
     border: 3px solid var(--color-brown);
     padding: 7px;
     margin: 15px;
 }
 
-.featured-btn:hover{
+.nav-btn:hover{
     background-color: var(--color-red);
     color: var(--color-grey);
 }
 
 .playlist-cards{
-    /*margin: 50px;*/
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -180,4 +181,18 @@ nav{
     height: 100px;
     width: 100px;
     margin: 10px;
+}
+
+#add-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#adding-songs {
+    margin: 10px;
+}
+
+#add-song-form {
+    display: flex;
+    flex-direction: column;
 }

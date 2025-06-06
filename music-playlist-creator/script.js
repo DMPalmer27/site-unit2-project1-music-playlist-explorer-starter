@@ -3,10 +3,10 @@ const modalOverlay = document.querySelector('.modal-overlay');
 const body = document.querySelector('body');
 let isModalOpen = false;
 
+
 const handleStandardModalOpen = (id) => {
     modal.style.display = 'flex';
     modalOverlay.style.display = 'flex';
-    //body.style.backgroundColor = 'var(--color-darker-grey)';
     setTimeout(()=>{
         isModalOpen = true;
     },10)
@@ -30,6 +30,85 @@ const handleStandardModalOpen = (id) => {
         });
 }
 
+const handleAddModalOpen = () => {
+    modal.style.display = 'flex';
+    modalOverlay.style.display = 'flex';
+    setTimeout(()=>{
+        isModalOpen = true;
+    },10)
+    modal.innerHTML = `
+    <form id='add-form'>
+        <h1>Playlist Information</h3>
+        <label for='playlist-title'> Title: </label>
+        <input type='text' id='playlist-title' name='playlist-title' required>
+        <label for='playlist-author'>Author:</label>
+        <input type='text' id='playlist-author' name='playlist-author' required>
+        <label for='playlist-image'>Image (Not Required):</label>
+        <input type='text' id='playlist-image' name='playlist-image'>
+        <div id='adding-songs'></div>
+        <button type='submit'> Create Playlist </button>
+    </form>
+    <form id='add-song-form'>
+        <h3>Song Information:</h3>
+        <label for='song-title'> Title: </label>
+        <input type='text' id='song-title' name='song-title'>
+        <label for='song-author'> Artist: </label>
+        <input type='text' id='song-author' name='song-author'>
+        <label for='song-album'> Album: </label>
+        <input type='text' id='song-album' name='song-album'>
+        <label for='song-length'> Length: </label>
+        <input type='text' id='song-length' name='song-length'>
+        <button type='submit'>Add</button>
+    </form>
+    `;
+    newSongs = []
+    addSong = document.querySelector('#add-song-form');
+    addSong.addEventListener('submit', (event)=>{
+        event.preventDefault();
+        const titleInput = document.querySelector('#song-title');
+        const title = titleInput.value;
+        const artistInput = document.querySelector('#song-author');
+        const artist = artistInput.value;
+        const albumInput = document.querySelector('#song-album');
+        const album = albumInput.value;
+        const lengthInput = document.querySelector('#song-length');
+        const length = lengthInput.value;
+        let newSong = {
+            'title': title ? title : 'unknown',
+            'artist': artist ? artist : 'unknown',
+            'album': album ? album : 'unknown',
+            'length': length ? length : 'unknown',
+            'image': 'assets/img/song.png',
+        }
+        newSongs = [...newSongs, newSong];
+        event.target.reset();
+    })
+    addForm = document.querySelector('#add-form');
+    addForm.addEventListener('submit', (event)=>{
+        event.preventDefault();
+        const nameInput = document.querySelector('#playlist-title');
+        const name = nameInput.value;
+        const authorInput = document.querySelector('#playlist-author');
+        const author = authorInput.value;
+        const imageInput = document.querySelector('#playlist-image');
+        const image = imageInput.value;
+
+        const newPlaylist = {
+            'id': playlists.length,
+            'name': name,
+            'author': author,
+            'art': image ? image : 'assets/img/playlist.png',
+            'liked': true,
+            'likeCount': 1,
+            'songs': newSongs,
+        }
+        playlists = [...playlists, newPlaylist];
+        event.target.reset();
+    });
+}
+
+
+
 const handleShuffleBtn = (id) => {
     curSongs = playlists[id].songs;
     newSongs = shuffleArray(playlists[id].songs);
@@ -41,6 +120,12 @@ const handleShuffleBtn = (id) => {
 const renderSongs = (id) => {
     songContainer = modal.querySelector('.playlist-songs');
     songContainer.innerHTML = '';
+    if (!playlists[id].songs){
+        songContainer.innerHTML =  `
+        <h1>No Songs</h1>
+        `;
+        return
+    }
     for (let song of playlists[id].songs){
         songContainer.innerHTML += `
         <div class='song'>
@@ -65,13 +150,13 @@ const handleEditModalOpen = (playlist) => {
 const handleOutsideModalClick = (event) => {
     if (isModalOpen){
         if (!modal.contains(event.target)){
-            console.log('click outside modal - closing');
             modal.style.display = 'none';
             modalOverlay.style.display = 'none';
             setTimeout(() => {
                 isModalOpen = false;
             },10)
         }
+        loadPlaylistCards();
     }
 }
 
@@ -120,8 +205,6 @@ const handleLikePlaylist = (id) => {
 }
 
 const handleDeletePlaylist = (id) => {
-    //TODO
-    console.log('playlist delete');
     playlists.splice(id, 1);
     //update the ids of all playlists after
     for (let i = id; i < playlists.length; i++){
@@ -183,9 +266,33 @@ document.addEventListener('DOMContentLoaded', () => {
         return {...playlist, 'songs': playlistSongs, 'likeCount': likeCount};
     })
     loadPlaylistCards();
-    featBtn = document.querySelector('.featured-btn');
+    featBtn = document.querySelector('#featured-btn');
     featBtn.addEventListener('click', handleFeatBtn);
+    search = document.querySelector('#search-form');
+    search.addEventListener('submit', handleSearch);
+    clear = document.querySelector('#clear-btn');
+    clear.addEventListener('click', handleClear);
+    addBtn = document.querySelector('#add-btn');
+    addBtn.addEventListener('click', handleAddModalOpen);
 })
+
+const handleSearch = (event) => {
+    event.preventDefault();
+    const searchInput = document.querySelector('#search-entry');
+    const searchString = searchInput.value;
+    const validPlaylists = playlists.filter((playlist)=>{
+        if (playlist.name.includes(searchString) || playlist.author.includes(searchString)){
+            return true;
+        }
+        return false;
+    })
+}
+
+const handleClear = () => {
+    loadPlaylistCards();
+}
+
+
 
 
 
