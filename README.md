@@ -132,9 +132,7 @@ Deployed Application (**required**): [Music Playlist Explorer Deployed Site](htt
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video actually renders and is playable when viewing this README. Ensure your walkthrough showcases the presence and/or functionality of all features you implemented above (check them off as you film!). Pay attention to any **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS** checkboxes listed above to ensure graders see the full functionality of your website! (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+`[https://www.loom.com/share/00ba5841b5b44fea942a3ac08230a5fa?sid=a836dc89-35bc-4d31-8f12-c65f010b7fc7]`
 
 ### Reflection
 
@@ -148,7 +146,7 @@ I would have completed the Edit stretch feature and worked a bit more on styling
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I did not do a live demo for this project
 
 ### Open-source libraries used
 
