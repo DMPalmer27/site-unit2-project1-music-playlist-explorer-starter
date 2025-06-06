@@ -107,7 +107,7 @@ const handleAddModalOpen = () => {
       likeCount: 1,
       songs: newSongs,
     };
-    playlists = [...playlists, newPlaylist];
+    playlists = [newPlaylist, ...playlists];
     shownPlaylists = playlists;
     event.target.reset();
   });
