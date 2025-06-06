@@ -86,7 +86,7 @@ const createPlaylistCard = (playlist) => {
             <h1 class='like-btn'>${playlist.liked ? '❤️' : '🩶'}</h1>
             <p>${playlist.likeCount}</p>
         </div>
-        <button id='edit-btn' onclick='handleEditPlaylist()'>Edit</button>
+        <p class='edit-btn'>Edit</p>
         <h1 class='del-btn'>🗑️</h1>
     </div>
     `;
@@ -156,11 +156,15 @@ const loadPlaylistCards = () => {
         container.appendChild(el);
         likeBtn = el.querySelector('.like-btn');
         delBtn = el.querySelector('.del-btn');
+        editBtn = el.querySelector('.edit-btn');
         likeBtn.addEventListener('click', () => {
             handleLikePlaylist(playlist.id);
         });
         delBtn.addEventListener('click', () => {
             handleDeletePlaylist(playlist.id);
+        });
+        editBtn.addEventListener('click', () => {
+            handleEditPlaylist(playlist.id);
         });
     }
 }
@@ -175,4 +179,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return {...playlist, 'songs': playlistSongs, 'likeCount': likeCount};
     })
     loadPlaylistCards();
+    featBtn = document.querySelector('.featured-btn');
+    featBtn.addEventListener('click', handleFeatBtn);
 })
+
+
+
+//featured playlist
+const handleFeatBtn = () => {
+    randID = Math.floor(Math.random()*playlists.length)
+    handleStandardModalOpen(randID);
+}

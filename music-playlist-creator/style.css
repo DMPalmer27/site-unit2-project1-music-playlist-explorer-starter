@@ -55,6 +55,16 @@ footer {
     align-items: center;
 }
 
+.edit-btn{
+    border: 2px solid var(--color-brown);
+    padding: 5px
+}
+
+.edit-btn:hover{
+    background-color: var(--color-red);
+    color: var(--color-grey);
+}
+
 
 .playlist-image {
     height: 250px;
@@ -67,7 +77,6 @@ footer {
     flex-direction: row;
     padding: 20px;
 }
-
 
 
 .playlist-likes {
